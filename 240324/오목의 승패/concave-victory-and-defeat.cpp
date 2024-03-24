@@ -29,8 +29,8 @@ bool checkFive(int x, int y, int player) {
         if (count == 5) {
             int backX = x - dx[direction];
             int backY = y - dy[direction];
-            int forwardX = nx;
-            int forwardY = ny;
+            int forwardX = nx + dx[direction];
+            int forwardY = ny + dy[direction];
 
             bool backCheck = !inRange(backX, backY) || board[backX][backY] != player;
             bool forwardCheck = !inRange(forwardX, forwardY) || board[forwardX][forwardY] != player;
@@ -54,14 +54,14 @@ int main() {
         for (int j = 0; j < N; j++) {
             if (board[i][j] != 0) {
                 if (checkFive(i, j, board[i][j])) {
-                    cout << board[i][j] << endl;
-                    cout << i + 1 << " " << j + 1 << endl;
+                    cout << board[i][j]<<'\n';
+                    cout << i + 1 << " " << j + 1;
                     return 0;
                 }
             }
         }
     }
 
-    cout << 0 << endl;
+    cout << 0;
     return 0;
 }
