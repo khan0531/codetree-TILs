@@ -27,14 +27,16 @@ bool checkFive(int x, int y, int player) {
         }
 
         if (count == 5) {
-            int prevX = x - dx[direction];
-            int prevY = y - dy[direction];
-            int nextX = nx + dx[direction];
-            int nextY = ny + dy[direction];
-            if (!inRange(prevX, prevY) || board[prevX][prevY] != player) {
-                if (!inRange(nextX, nextY) || board[nextX][nextY] != player) {
-                    return true;
-                }
+            int backX = x - dx[direction];
+            int backY = y - dy[direction];
+            int forwardX = nx;
+            int forwardY = ny;
+
+            bool backCheck = !inRange(backX, backY) || board[backX][backY] != player;
+            bool forwardCheck = !inRange(forwardX, forwardY) || board[forwardX][forwardY] != player;
+
+            if (backCheck && forwardCheck) {
+                return true;
             }
         }
     }
